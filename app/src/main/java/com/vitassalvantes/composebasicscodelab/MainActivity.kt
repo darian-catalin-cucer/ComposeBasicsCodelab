@@ -3,6 +3,9 @@ package com.vitassalvantes.composebasicscodelab
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -10,9 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
@@ -52,7 +53,6 @@ fun MyScreenContent(names: List<String> = List(100) { "Hello Compose #$it" }) {
 
     Column(modifier = Modifier.fillMaxHeight()) {
         NameList(names = names, modifier = Modifier.weight(1f))
-
         Counter(
             count = counterState.value,
             updateCount = { newCount -> counterState.value = newCount }
@@ -74,11 +74,20 @@ fun NameList(names: List<String>, modifier: Modifier = Modifier) {
 }
 
 /**
- * Some text that greets the person and prints name
+ * Some animated text that greets the person and prints name
  */
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!", modifier = Modifier.padding(24.dp))
+    var isSelected by remember { mutableStateOf(false) }
+    val backgroundColor by animateColorAsState(if (isSelected) Color.Red else Color.Transparent)
+
+    Text(
+        text = "Hello $name!",
+        modifier = Modifier
+            .padding(24.dp)
+            .background(color = backgroundColor)
+            .clickable(onClick = { isSelected = !isSelected })
+    )
 }
 
 /**
