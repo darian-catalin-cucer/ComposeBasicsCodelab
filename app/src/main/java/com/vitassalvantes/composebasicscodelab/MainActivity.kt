@@ -48,7 +48,7 @@ fun MyApp(content: @Composable () -> Unit) {
  * Set content on this screen
  */
 @Composable
-fun MyScreenContent(names: List<String> = List(100) { "Hello Compose #$it" }) {
+fun MyScreenContent(names: List<String> = List(100) { "Compose #$it" }) {
     val counterState = remember { mutableStateOf(0) }
 
     Column(modifier = Modifier.fillMaxHeight()) {
@@ -87,7 +87,7 @@ fun Greeting(name: String) {
             .padding(24.dp)
             .background(color = backgroundColor)
             .clickable(onClick = { isSelected = !isSelected }),
-        style = MaterialTheme.typography.body1
+        style = MaterialTheme.typography.h6
     )
 }
 
