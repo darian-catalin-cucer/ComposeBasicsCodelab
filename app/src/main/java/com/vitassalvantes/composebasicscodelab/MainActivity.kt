@@ -7,11 +7,14 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,21 +47,29 @@ fun MyApp(content: @Composable () -> Unit) {
  * Set content on this screen
  */
 @Composable
-fun MyScreenContent(names: List<String> = listOf("Android", "Compose", "Vitas")) {
+fun MyScreenContent(names: List<String> = List(100) { "Hello Compose #$it" }) {
     val counterState = remember { mutableStateOf(0) }
 
     Column(modifier = Modifier.fillMaxHeight()) {
-        Column(modifier = Modifier.weight(1f)) {
-            names.forEach { name ->
-                Greeting(name = name)
-                Divider(color = Color.Black)
-            }
-        }
+        NameList(names = names, modifier = Modifier.weight(1f))
 
         Counter(
             count = counterState.value,
             updateCount = { newCount -> counterState.value = newCount }
         )
+    }
+}
+
+/**
+ * List of names
+ */
+@Composable
+fun NameList(names: List<String>, modifier: Modifier = Modifier) {
+    LazyColumn(modifier = modifier) {
+        items(items = names) { name ->
+            Greeting(name = name)
+            Divider(color = Color.Black)
+        }
     }
 }
 
