@@ -75,7 +75,12 @@ fun Greeting(name: String) {
  */
 @Composable
 fun Counter(count: Int, updateCount: (Int) -> Unit) {
-    Button(onClick = { updateCount(count + 1) }) {
+    Button(
+        onClick = { updateCount(count + 1) },
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = if (count % 2 == 0) Color.Green else Color.Red
+        )
+    ) {
         Text(text = "I've been clicked $count times")
     }
 }
