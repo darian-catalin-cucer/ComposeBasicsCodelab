@@ -17,7 +17,8 @@ of [Jetpack Compose pathway](https://developer.android.com/courses/pathways/comp
 
 ## How does it work
 
-...
+The user opens the app and sees a scrollable list of strings and a button. When user clicks on a
+text, it changes color. When user clicks on the button, it changes color and the number of clicks.
 
 ## Screenshots
 
@@ -27,9 +28,9 @@ At the beginning:
 
 <img src="screenshots/screenshot_start.png" alt="screenshot_start" style="width:231px;height:500px;">
 
-After click on the button:
+After click on the button and on the text:
 
-...
+<img src="screenshots/screenshot_click.png" alt="screenshot_start" style="width:231px;height:500px;">
 
 ## Technologies
 
