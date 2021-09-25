@@ -3,6 +3,7 @@ package com.vitassalvantes.composebasicscodelab
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
@@ -18,7 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyApp {
-                Greeting(name = "Android")
+                MyScreenContent()
             }
         }
     }
@@ -28,7 +29,6 @@ class MainActivity : ComponentActivity() {
 // Container function
 fun MyApp(content: @Composable () -> Unit) {
     ComposeBasicsCodelabTheme {
-        // A surface container using the 'background' color from the theme
         Surface(color = Color.Yellow) {
             content()
         }
@@ -36,30 +36,27 @@ fun MyApp(content: @Composable () -> Unit) {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Surface {
-        Text(text = "Hello $name!", modifier = Modifier.padding(24.dp))
+fun MyScreenContent(names: List<String> = listOf("Android", "Compose", "Vitas")) {
+    Column {
+        names.forEach { name ->
+            Greeting(name = name)
+            if (name != names.last()) Divider(color = Color.Black)
+        }
     }
+}
+
+@Composable
+fun Greeting(name: String) {
+    Text(text = "Hello $name!", modifier = Modifier.padding(24.dp))
 }
 
 @Preview(
     name = "App",
-    showSystemUi = true
+    showBackground = true
 )
 @Composable
 fun PreviewMyApp() {
     MyApp {
-        Greeting(name = "Compose")
-    }
-}
-
-@Preview(
-    name = "Greeting",
-    showBackground = true
-)
-@Composable
-fun DefaultPreview() {
-    ComposeBasicsCodelabTheme {
-        Greeting("Android")
+        MyScreenContent()
     }
 }
