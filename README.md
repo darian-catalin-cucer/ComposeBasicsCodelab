@@ -2,7 +2,8 @@
 
 [![current version](https://img.shields.io/badge/current_version-1.0-green)](#ComposeBasicsCodelab)
 
-This is a simple dice app for Android that was created as part of course [Android Basics in Kotlin](https://developer.android.com/courses/android-basics-kotlin/course) by Google.
+This is a simple app for Android that was created as part
+of [Jetpack Compose pathway](https://developer.android.com/courses/pathways/compose) by Google.
 
 ## Table of contents
 
@@ -16,7 +17,7 @@ This is a simple dice app for Android that was created as part of course [Androi
 
 ## How does it work
 
-The user starts the app and clicks on the "ROLL" button, after which the two dice images change their values to random ones.
+...
 
 ## Screenshots
 
@@ -26,9 +27,9 @@ At the beginning:
 
 <img src="screenshots/screenshot_start.png" alt="screenshot_start" style="width:231px;height:500px;">
 
-After click on the "ROLL" button:
+After click on the button:
 
-<img src="screenshots/screenshot_roll.png" alt="screenshot_roll" style="width:231px;height:500px;">   
+...
 
 ## Technologies
 
@@ -48,14 +49,14 @@ After click on the "ROLL" button:
 
 Development of the project began and completed on **September 25, 2021**.
 
-*Since I am developing this project mainly alone, I see no reason to use [Trello](https://trello.com/).*
+*Since I am developing this project mainly alone, I see no reason to
+use [Trello](https://trello.com/).*
 
 ## Project statistics
 
-[![wakatime](https://wakatime.com/badge/github/VitasSalvantes/DiceRoller.svg)](https://wakatime.com/badge/github/VitasSalvantes/DiceRoller)
+[![wakatime](https://wakatime.com/badge/github/VitasSalvantes/ComposeBasicsCodelab.svg)](https://wakatime.com/badge/github/VitasSalvantes/ComposeBasicsCodelab)
 
-See more
-on [WakaTime](https://wakatime.com/@VitasSalvantes/projects/rqajljvzmm).
+See more on [WakaTime](https://wakatime.com/@VitasSalvantes/projects/lwgyfslruv).
 
 ## How to install
 
@@ -66,4 +67,6 @@ on [WakaTime](https://wakatime.com/@VitasSalvantes/projects/rqajljvzmm).
 
 ## How to contribute
 
-The project was created as part of course [Android Basics in Kotlin](https://developer.android.com/courses/android-basics-kotlin/course) by Google and does not provide for contribution.
+The project was created as part
+of [Jetpack Compose pathway](https://developer.android.com/courses/pathways/compose) by Google and
+does not provide for contribution.
