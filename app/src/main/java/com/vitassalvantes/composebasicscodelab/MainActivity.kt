@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -25,8 +27,10 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+/**
+ * Container function that sets theme and color for all elements on screen
+ */
 @Composable
-// Container function
 fun MyApp(content: @Composable () -> Unit) {
     ComposeBasicsCodelabTheme {
         Surface(color = Color.Yellow) {
@@ -35,6 +39,9 @@ fun MyApp(content: @Composable () -> Unit) {
     }
 }
 
+/**
+ * Set content on this screen
+ */
 @Composable
 fun MyScreenContent(names: List<String> = listOf("Android", "Compose", "Vitas")) {
     Column {
@@ -42,12 +49,26 @@ fun MyScreenContent(names: List<String> = listOf("Android", "Compose", "Vitas"))
             Greeting(name = name)
             if (name != names.last()) Divider(color = Color.Black)
         }
+        Divider(color = Color.Transparent, thickness = 32.dp)
+        Counter()
     }
 }
 
+/**
+ * Some text that greets the person and prints name
+ */
 @Composable
 fun Greeting(name: String) {
     Text(text = "Hello $name!", modifier = Modifier.padding(24.dp))
+}
+
+@Composable
+fun Counter() {
+    val count = remember { mutableStateOf(0) }
+
+    Button(onClick = { count.value++ }) {
+        Text(text = "I've been clicked ${count.value} times")
+    }
 }
 
 @Preview(
