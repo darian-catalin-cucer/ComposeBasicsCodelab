@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -46,12 +47,14 @@ fun MyApp(content: @Composable () -> Unit) {
 fun MyScreenContent(names: List<String> = listOf("Android", "Compose", "Vitas")) {
     val counterState = remember { mutableStateOf(0) }
 
-    Column {
-        names.forEach { name ->
-            Greeting(name = name)
-            if (name != names.last()) Divider(color = Color.Black)
+    Column(modifier = Modifier.fillMaxHeight()) {
+        Column(modifier = Modifier.weight(1f)) {
+            names.forEach { name ->
+                Greeting(name = name)
+                Divider(color = Color.Black)
+            }
         }
-        Divider(color = Color.Transparent, thickness = 32.dp)
+
         Counter(
             count = counterState.value,
             updateCount = { newCount -> counterState.value = newCount }
@@ -67,6 +70,9 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!", modifier = Modifier.padding(24.dp))
 }
 
+/**
+ * Button with clicks counter
+ */
 @Composable
 fun Counter(count: Int, updateCount: (Int) -> Unit) {
     Button(onClick = { updateCount(count + 1) }) {
